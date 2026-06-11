@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer'
 import { config } from '@/lib/config'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(config.siteUrl || 'https://xsitplan.com'),
   title: config.businessName + (config.tagline ? ' — ' + config.tagline : ''),
   description: config.seoDescription || config.tagline,
   openGraph: {
@@ -12,11 +13,20 @@ export const metadata: Metadata = {
     description: config.seoDescription || config.tagline,
     url: config.siteUrl,
     type: 'website',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: config.businessName,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: config.businessName,
     description: config.seoDescription || config.tagline,
+    images: ['/opengraph-image'],
   },
 }
 
